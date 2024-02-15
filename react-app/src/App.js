@@ -29,8 +29,6 @@ const App = () => {
   useEffect(() => {
     const availableCoworkers = coworkers.filter(coworker => !payerHistory.some(payer => payer.indexNumber === coworkers.indexOf(coworker)));
     setAvailableCoworkers(availableCoworkers);
-    console.log(availableCoworkers, "availableCoworkers")
-    console.log(payerHistory, "payerHistory")
   }
   
   , [payerHistory, simulatedDate]);
@@ -40,8 +38,6 @@ const App = () => {
       setDb([...db, ...payerHistory ]);
       setPayerHistory([]);
     }
-
-    console.log("db", db);
 
   }, [payerHistory, db]);
   const handleNextPayer = () => {
@@ -60,12 +56,10 @@ const App = () => {
     setPayerHistory([...payerHistory, newPayer]);
     // remove the current payer from the available coworkers
     setAvailableCoworkers(availableCoworkers.filter(coworker => coworker !== currentPayer))
-    console.log(payerHistory);
   };
 
   const handleSimulatedDateChange = (date) => {
     // make sure date is not null and that it has day, month and year values
-    console.log("date output", date)
     const formattedDate = date ? new Date(date) : null;
     const dateIsValid = formattedDate && formattedDate.getDate() && formattedDate.getMonth() && formattedDate.getFullYear();
       if (formattedDate && dateIsValid) {
@@ -76,7 +70,6 @@ const App = () => {
 
   };
 
-  console.log("currentPayer", currentPayer);
   const totalPayment = coworkers.reduce((sum, coworker) => sum + coworker.drinkCost, 0);
 
   const isBusinessDay = (date) => {
