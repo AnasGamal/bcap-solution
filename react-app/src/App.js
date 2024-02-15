@@ -16,7 +16,7 @@ const coworkers = [
 ];
 
 const App = () => {
-  const [currentPayerIndex, setCurrentPayerIndex] = useState(0);
+  const [currentPayerIndex, setCurrentPayerIndex] = useState(null);
   const [payerHistory, setPayerHistory] = useState([]);
   const [db, setDb] = useState([]);
   const [simulatedDate, setSimulatedDate] = useState(null); // Add simulatedDate state
@@ -31,7 +31,7 @@ const App = () => {
     setAvailableCoworkers(availableCoworkers);
   }
   
-  , [payerHistory, simulatedDate]);
+  , [payerHistory, simulatedDate, currentPayerIndex]);
 
   useEffect(() => {
     if (payerHistory.length === coworkers.length) {
@@ -40,6 +40,9 @@ const App = () => {
     }
 
   }, [payerHistory, db]);
+
+  
+
   const handleNextPayer = () => {
     const randomIndex = Math.floor(Math.random() * (availableCoworkers.length - 1));
     setCurrentPayerIndex(coworkers.indexOf(availableCoworkers[randomIndex]));
@@ -67,7 +70,6 @@ const App = () => {
       } else if (formattedDate && !dateIsValid) {
         setSimulatedDate(null);
       }
-
   };
 
   const totalPayment = coworkers.reduce((sum, coworker) => sum + coworker.drinkCost, 0);
@@ -93,6 +95,11 @@ const App = () => {
 
   const displayWeek = `${weekStartDate.getMonth() + 1}/${weekStartDate.getDate()}-${weekEndDate.getMonth() + 1}/${weekEndDate.getDate()}`;
 
+  useEffect(() => {
+    const availableCoworkers = coworkers.filter(coworker => !payerHistory.some(payer => payer.indexNumber === coworkers.indexOf(coworker)));
+    setAvailableCoworkers(availableCoworkers);  
+    handleNextPayer();
+  }, []);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
