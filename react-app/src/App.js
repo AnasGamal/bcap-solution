@@ -107,7 +107,7 @@ const App = () => {
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
-        height: '100vh', 
+        minHeight: '100vh',
         backgroundColor: '#f2f2f2' 
       }}>
         <Box sx={{ 
@@ -161,7 +161,8 @@ const App = () => {
           backgroundColor: '#fff', 
           borderRadius: '8px', 
           boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', 
-          marginLeft: '20px' 
+          marginLeft: '20px', 
+          marginBottom: '20px'
         }}>
           <Typography variant="h6" sx={{ marginBottom: '20px' }}>Simulate a different date (for testing purposes only)</Typography>
           <DatePicker
