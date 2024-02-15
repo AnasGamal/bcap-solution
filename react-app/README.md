@@ -2,6 +2,10 @@
 
 This React app represents a coffee payment system among coworkers. Each day, a different coworker is designated as the payer, responsible for the total payment. The app considers weekdays (Monday to Friday) as business days.
 
+## Deployment Demo:
+
+You can view a deployment demo of the app at [https://bcap-solution.vercel.app/](https://bcap-solution.vercel.app/).
+
 ## Instructions:
 
 ### 1. Build and Run the Solution:
