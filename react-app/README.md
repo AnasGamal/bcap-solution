@@ -42,8 +42,3 @@ npm start
 - The payment history of coworkers is monitored, and the payment cycle resets after each coworker has paid. This cycle spans 7 business days.
 - The simulated date feature is for testing purposes only and does not affect the actual system date, It is not intended for use by frontend users but serves as a tool for developers to simulate specific dates during testing scenarios.
 - The app uses the MUI (Material-UI) library for the user interface components.
-
-## Additional Notes:
-
-- The app uses the specified dependencies in the `package.json` file.
-- The `npm start` command is used to run the development server.
